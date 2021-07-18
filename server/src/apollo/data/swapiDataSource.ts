@@ -20,4 +20,10 @@ export class SwapiDataSource extends RESTDataSource {
         const homeWorld = await this.get<IHomeWorld>(url);
         return homeWorld;
     }
+
+    async searchPeople(personName: string): Promise<IResults> {
+        const people = await this.get(`/people/?search=${personName}`);
+
+        return people;
+    }
 }
