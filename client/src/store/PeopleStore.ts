@@ -9,6 +9,7 @@ class PeopleStore {
   constructor() {
     makeAutoObservable(this, {
       getPeople: action,
+      togglePersonModal: action,
     });
   }
   readonly apolloClient = new ApolloClient({
@@ -16,22 +17,35 @@ class PeopleStore {
     cache: new InMemoryCache(),
   });
 
+  private paginationSize: number = 10;
   people: TPerson[] = [];
   loading: boolean = true;
+  pages: number = 0;
+  showPersonModal: boolean = false;
 
-  async getPeople() {
+  async getPeople(pageNumber?: string) {
     this.loading = true;
     console.log("calling getPeople");
 
+    const queryOptions = pageNumber
+      ? {
+          query: GET_PEOPLE,
+          variables: { pageNumber: pageNumber },
+        }
+      : { query: GET_PEOPLE };
+
+    console.log("queryOptions", queryOptions);
+
     this.apolloClient
-      .query<TResults>({
-        query: GET_PEOPLE,
-      })
+      .query<TResults>(queryOptions)
       .then((response) => {
         console.log("data", response);
 
         runInAction(() => {
           this.people = response.data.people.results;
+          this.pages = Math.ceil(
+            response.data.people.count / this.paginationSize
+          );
         });
       })
       .finally(() => {
@@ -39,6 +53,12 @@ class PeopleStore {
           this.loading = false;
         });
       });
+  }
+
+  togglePersonModal(toggleValue: boolean) {
+    runInAction(() => {
+      this.showPersonModal = toggleValue;
+    });
   }
 }
 
