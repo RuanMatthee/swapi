@@ -8,7 +8,6 @@ export const queryResolvers = {
     const { page } = args;
 
     const people = await swapiDataSource.getPeople(page);
-    console.log("people", people);
     return people;
   },
 
