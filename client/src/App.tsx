@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { peopleContext } from "./store/PeopleStore";
 import { Loading } from "./components/Loading";
-import { Pagination } from "semantic-ui-react";
+import { Divider, Pagination } from "semantic-ui-react";
 import { useEffect } from "react";
 import { Details } from "./components/Details";
 import { PeopleList } from "./components/PeopleList";
@@ -17,16 +17,16 @@ export const App: React.FC = observer(() => {
   }, [peopleStore]);
 
   if (peopleStore.loading) return <Loading />;
-  return <Router>
-        <Switch>
+  return (
+    <Router>
+      <Switch>
+        <Route path="/details">
+          <Details />
+        </Route>
 
-          <Route path="/details">
-            <Details />
-          </Route>
-
-          <Route path="/">
+        <Route path="/">
+          <div className="grid justify-items-center grid-cols-1">
             <PeopleList />
-
             <Pagination
               activePage={activePage}
               onPageChange={(e, { activePage }) => {
@@ -35,7 +35,9 @@ export const App: React.FC = observer(() => {
               }}
               totalPages={peopleStore.pages}
             />
-          </Route>
-        </Switch>
-      </Router>
+          </div>
+        </Route>
+      </Switch>
+    </Router>
+  );
 });
