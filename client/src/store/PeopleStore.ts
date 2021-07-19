@@ -8,8 +8,7 @@ import { TResults } from "./types/TResults";
 class PeopleStore {
   constructor() {
     makeAutoObservable(this, {
-      getPeople: action,
-      togglePersonModal: action,
+      getPeople: action
     });
   }
   readonly apolloClient = new ApolloClient({
@@ -25,7 +24,6 @@ class PeopleStore {
 
   async getPeople(pageNumber?: string) {
     this.loading = true;
-    console.log("calling getPeople");
 
     const queryOptions = pageNumber
       ? {
@@ -54,13 +52,7 @@ class PeopleStore {
         });
       });
   }
-
-  togglePersonModal(toggleValue: boolean) {
-    runInAction(() => {
-      this.showPersonModal = toggleValue;
-    });
-  }
 }
 
 export const peopleStore = new PeopleStore();
-export const PeopleContext = createContext<PeopleStore>(peopleStore);
+export const peopleContext = createContext<PeopleStore>(peopleStore);

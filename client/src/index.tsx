@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { App } from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { PeopleContext, peopleStore } from "./store/PeopleStore";
+import { peopleContext, peopleStore } from "./store/PeopleStore";
 import 'semantic-ui-css/semantic.min.css'
 
 ReactDOM.render(
   <React.StrictMode>
-    <PeopleContext.Provider value={peopleStore}>
+    <peopleContext.Provider value={peopleStore}>
       <App />
-    </PeopleContext.Provider>
+    </peopleContext.Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

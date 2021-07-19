@@ -6,6 +6,12 @@ export const GET_PEOPLE = gql`
       count
       results {
         name
+        height
+        mass
+        gender
+        homeworld {
+          name
+        }
       }
     }
   }

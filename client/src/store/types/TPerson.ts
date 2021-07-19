@@ -3,5 +3,7 @@ export interface TPerson {
     height: string;
     mass: string
     gender: string;
-    homeworld: string
+    homeworld: {
+        name: string
+    }
 }
