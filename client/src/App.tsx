@@ -20,14 +20,14 @@ export const App: React.FC = observer(() => {
   return (
     <div>
       <Header />
-      <Router>
-        <Switch>
-          <Route path="/details">
-            <Details />
-          </Route>
+      <div className="grid justify-items-center grid-cols-1">
+        <Router>
+          <Switch>
+            <Route path="/details">
+              <Details />
+            </Route>
 
-          <Route path="/">
-            <div className="grid justify-items-center grid-cols-1">
+            <Route path="/">
               {!peopleStore.loading && (
                 <>
                   <PeopleList />
@@ -43,10 +43,10 @@ export const App: React.FC = observer(() => {
                 </>
               )}
               {peopleStore.loading && <Loading />}
-            </div>
-          </Route>
-        </Switch>
-      </Router>
+            </Route>
+          </Switch>
+        </Router>
+      </div>
     </div>
   );
 });

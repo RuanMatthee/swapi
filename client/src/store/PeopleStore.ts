@@ -12,7 +12,7 @@ class PeopleStore {
     });
   }
   readonly apolloClient = new ApolloClient({
-    uri: "http://localhost:3001/",
+    uri: "https://tfymi.sse.codesandbox.io/",
     cache: new InMemoryCache(),
   });
 
