@@ -9,7 +9,7 @@ export const PeopleList: React.FC = observer(() => {
   return (
     <div className="grid justify-items-center w-full">
       <div
-        className={`grid justify-items-center grid-cols-2 gap-4 clear-both mb-16 w-1/2`}
+        className={`grid justify-items-center sm:grid-cols-2 grid-cols-1 gap-4 clear-both mb-16 w-full lg:w-2/3`}
       >
         {peopleStore.people.map((person, index) => {
           return <PersonCard person={person} />;

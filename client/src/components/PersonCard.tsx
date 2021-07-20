@@ -23,7 +23,7 @@ export const PersonCard: React.FC<IPersonCardProps> = ({ person }) => {
             className="address card outline icon"
           ></i>
         </div>
-        <div className="text-2xl font-mono mt-4">{person.name}</div>
+        <div className="text-2xl sm:text-lg font-mono mt-4">{person.name}</div>
         <Divider />
         <div className="tracking-cust-wider">{person.homeworld.name}</div>
       </div>

@@ -11,7 +11,7 @@ const sayings = [
 
 export const Loading = () => (
   <div className="w-full h-screen grid justify-items-center grid-cols-1">
-    <Segment className="h-1/2 w-1/3">
+    <Segment className="h-1/2 w-2/3 sm:w-1/3">
       <Dimmer active>
         <Loader>{sayings[Math.floor(Math.random() * 4)]}</Loader>
       </Dimmer>
