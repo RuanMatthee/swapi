@@ -12,15 +12,16 @@ export const PersonCard: React.FC<IPersonCardProps> = ({ person }) => {
 
   return (
     <Link
-      className="justify-self-center w-10/12 text-center mb-20 mt-10 shadow-cust-blue p-10 rounded"
+      className="justify-self-center w-10/12 text-center mb-20 mt-10 shadow-cust-blue p-10 rounded
+      hover:text-red-800"
       onClick={() => detailsStore.setActivePerson(person)}
       to={detailsStore.detailsLink}
     >
       <div className="text-center">
-        <div>
+        <div className="mb-6">
           <i
             style={{ fontSize: "1.85em" }}
-            className="address card outline icon"
+            className="user outline icon"
           ></i>
         </div>
         <div className="text-2xl sm:text-lg font-mono mt-4">{person.name}</div>

@@ -32,19 +32,17 @@ class PeopleStore {
         }
       : { query: GET_PEOPLE };
 
-    console.log("queryOptions", queryOptions);
-
     this.apolloClient
       .query<TResults>(queryOptions)
       .then((response) => {
-        console.log("data", response);
-
         runInAction(() => {
           this.people = response.data.people.results;
           this.pages = Math.ceil(
             response.data.people.count / this.paginationSize
           );
         });
+      }).catch((reason) => {
+        console.error(reason);
       })
       .finally(() => {
         runInAction(() => {

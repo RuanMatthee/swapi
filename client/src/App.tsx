@@ -18,8 +18,7 @@ export const App: React.FC = observer(() => {
   }, [peopleStore]);
 
   return (
-    <div>
-      <Header />
+    <div className="h-full">
       <div className="grid justify-items-center grid-cols-1">
         <Router>
           <Switch>
@@ -30,6 +29,7 @@ export const App: React.FC = observer(() => {
             <Route path="/">
               {!peopleStore.loading && (
                 <>
+                  <Header />
                   <PeopleList />
                   <Pagination
                     activePage={activePage}

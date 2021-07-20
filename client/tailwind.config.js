@@ -8,8 +8,13 @@ module.exports = {
     },
     letterSpacing: {
       "cust-wider": ".75em",
+      "cust-prompt-wider": ".5em"
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        'Prompt': ['Prompt', 'sans-serif']
+      }
+    },
   },
   variants: {
     extend: {},
