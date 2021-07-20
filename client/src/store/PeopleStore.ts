@@ -12,7 +12,7 @@ class PeopleStore {
     });
   }
   readonly apolloClient = new ApolloClient({
-    uri: "https://tfymi.sse.codesandbox.io/",
+    uri: "https://epi4h.sse.codesandbox.io/",
     cache: new InMemoryCache(),
   });
 
